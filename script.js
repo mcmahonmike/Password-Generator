@@ -7,7 +7,7 @@ var numberArray = ['0', '0', '1', '1', '2', '2', '3', '3', '4', '4', '5', '5', '
 
 // Write password to the #password input
 function generatePassword() {
-
+var finalPassword = []
 let passwordLength
 var passwordIncludes = []
 
@@ -27,25 +27,25 @@ var passwordIncludes = []
     var UppercaseSelect = confirm('Would you like the password to contain upper case letters? Click Ok to Confirm or Cancel to abstain.')
    
     if (UppercaseSelect) {
-      passwordIncludes.concat(alphaUp);     
+      passwordIncludes.push(...alphaUp);     
     }
 
     var LowercaseSelect = confirm ('Would you like the password to contain lower case letters? Click Ok to Confirm or Cancel to abstain')
   
     if (LowercaseSelect) {
-      passwordIncludes.concat(alphaLow);
+      passwordIncludes.push(...alphaLow);
     }
     
     var specialCharacterSelect = confirm ('Would you like the password to contain special characters? Click Ok to confirm or Cancel to abstain')
     
     if (specialCharacterSelect) {
-     passwordIncludes.concat(specialCharacters);
+     passwordIncludes.push(...specialCharacters);
     }
 
     var numberSelect = confirm ('Would you like the password to contain numbers? Click OK to confirm or Cancel to abstain.')
 
     if (numberSelect){
-      passwordIncludes.concat(numberArray);
+      passwordIncludes.push(...numberArray);
     }
  
     var characterContains = UppercaseSelect + LowercaseSelect + specialCharacterSelect + numberSelect
@@ -57,12 +57,14 @@ var passwordIncludes = []
      console.log(passwordIncludes)
   }
 
- // for (i = 0; i < passwordLength; i++) {
-    //var addItem = function (){}
- // var characterLength = math.floor(math.random() * passwordIncludes.length)
-
-  //}
-
+ for (i = 0; i < passwordLength; i++) {
+    
+    var randomIndex = Math.floor(Math.random() * passwordIncludes.length);
+    var randomCharacter = passwordIncludes[randomIndex]
+    finalPassword.push(randomCharacter)
+    
+  }
+   return finalPassword.join('')
   
 }
 function writePassword() {
